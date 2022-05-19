@@ -1,0 +1,46 @@
+#!/bin/sh
+###
+ # @Author: summer yuanjie0311@dingtalk.com
+ # @Date: 2022-05-19 19:42:35
+ # @LastEditors: summer yuanjie0311@dingtalk.com
+ # @LastEditTime: 2022-05-19 19:42:52
+ # @FilePath: /Summer_Tec_Blog/deploy.sh
+ # @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+### 
+
+# If a command fails then the deploy stops
+# set -e
+
+printf "\033[0;32mDeploying updates to GitHub...\033[0m\n"
+
+# Create commit message
+msg="rebuilding site $(date)"
+if [ -n "$*" ]; then
+	msg="$*"
+fi
+
+# Build the project.
+echo ""
+echo ""
+echo "Committing changes to $(pwd)"
+hugo -D
+
+# Go To Public folder
+cd public
+
+# Add 'public' (Github Pages repo) changes to git and commit/push.
+echo ""
+echo ""
+echo "Committing changes to $(pwd)"
+git add .
+git commit -m "$msg"
+git push
+
+# Add this repos changes to git and commit/push. First 'cd' out of public
+cd ..
+echo ""
+echo ""
+echo "Committing changes to $(pwd)"
+git add .
+git commit -m "$msg"
+git push
