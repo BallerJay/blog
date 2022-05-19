@@ -2,5 +2,5 @@
 	path = themes/LoveIt
 	url = https://github.com/dillonzq/LoveIt.git
 [submodule "ballerjay.github.io"]
-	path = ballerjay.github.io
+	path = public
 	url = https://github.com/BallerJay/ballerjay.github.io.git
