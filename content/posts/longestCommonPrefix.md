@@ -1,6 +1,6 @@
 ---
 title: "最长公共前缀"
-date: 2022-05-19T19:05:49+08:00
+date: 2022-05-19
 #description: <descriptive text here>
 
 # weight: 1
