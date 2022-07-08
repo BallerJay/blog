@@ -24,7 +24,7 @@ echo ""
 echo ""
 echo "Committing changes to $(pwd)"
 hugo -D
-gi
+
 # Go To Public folder
 cd public
 
