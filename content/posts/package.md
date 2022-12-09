@@ -8,7 +8,7 @@ date: 2022-08-06
 # aliases: ["/first"]
 
 tags: ["package.json 与 package-lock.json 的关系"]
-categories: ["JavaScript"]
+categories: ["前端工程化"]
 showToc: true
 TocOpen: false
 draft: false
