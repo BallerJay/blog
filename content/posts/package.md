@@ -29,8 +29,6 @@ relative: false # when using page bundles set this to true
 hidden: true # only hide on current single page
 ---
 
-`package.json` 和 `package-lock.json` 之间的关系。
-
 ### 1. Package.json
 
 **Package.json 用来描述项目及项目所依赖的模块信息**。
