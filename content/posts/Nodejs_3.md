@@ -529,9 +529,11 @@ server.use(function (err, req, res, next) {
 
 自 Express 4.16.0 版本开始，Express 内置了 3 个常用的中间件，极大的提高了 Express 项目的开发效率和体验:
 
-express.static 快速托管静态资源的内置中间件，例如: HTML 文件、图片、CSS 样式等(无兼容性)
-express,json 解 JSON 格式的请求体数据(有兼容性，仅在 4.16.0+ 版本中可用)
-express.urlencoded 解析 URL-encoded 格式的请求体数据 (有兼容性，仅在 4.16.0+ 版本中可用)
+express.static 快速托管静态资源的内置中间件，例如: HTML 文件、图片、CSS 样式等(无兼容性)。
+
+express.json 解析 JSON 格式的请求体数据(有兼容性，仅在 4.16.0+ 版本中可用)。
+
+express.urlencoded 解析 URL-encoded 格式的请求体数据 (有兼容性，仅在 4.16.0+ 版本中可用)。
 
 ```javascript
 // 配置解析 application/json 格式数据的内置中间件
@@ -600,8 +602,9 @@ server.post("/urlForm", function(req,res){
 
 实现步骤：
 
-6.1. 定义中间件函数
-6.2. 监听 req 的 data 事件
+1. 定义中间件函数
+
+2. 监听 req 的 data 事件
 
 在中间件中，需要监听 req 对象的 data 事件，来获取客户端发送到服务端的数据，如果数据量比较大，无法一次性发送完毕，则客户端会把数据切割后，分批发送到服务器。所以 data 事件可能会触发多次，每一次触发 data 事件时，获取到数据只是完整数据的一部分，需要手动对接收到的数据进行拼接。
 
@@ -615,7 +618,7 @@ req.on("data", chunk => {
 });
 ```
 
-6.3. 监听 req 的 end 事件
+3. 监听 req 的 end 事件
 
 当请求体数据接收完毕之后，会自动触发 req 的 end 事件。因此，我们可以在 req 的 end 事件中，拿到并处理完整的请求体数据。示例代码如下：
 
@@ -628,7 +631,7 @@ req.on("end", () => {
 });
 ```
 
-6.4 使用 querystring 模块解析请求体数据
+4 使用 querystring 模块解析请求体数据
 
 Nodejs 内置了一个 querystring 模块，专门用来处理查询字符串。通过这个模块提供的 parse 函数，可以轻松把查询字符串，解析成对象的格式。示例代码如下：
 
@@ -639,7 +642,7 @@ const qs = require("querystring");
 const body = qs.parse(str);
 ```
 
-6.5 将解析出来的数据对象挂载为 req.body
+5 将解析出来的数据对象挂载为 req.body
 
 上游的中间件和下游的中间件及路由之间，共享同一份 req 和 res。因此，我们可以将解析出来的数据，挂载为 req 的自定义属性，命名为 req.body，供下游使用。示例代码如下：
 
@@ -651,7 +654,7 @@ req.on("end", () => {
 });
 ```
 
-6.6 将自定义中间件封装为模块
+6 将自定义中间件封装为模块
 
 为了优化代码的结构，我们可以把自定义的中间件函数，封装为独立的模块，示例代码如下：
 
