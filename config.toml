@@ -38,6 +38,10 @@ languageName = "简体中文"
   # website images for Open Graph and Twitter Cards
   # 网站图片, 用于 Open Graph 和 Twitter Cards
   images = [""]
+  # 是否显示目录
+  showToc = true
+  # 目录是否默认展开
+  TocOpen = true
 
   # Header config
   # 页面头部导航栏配置
